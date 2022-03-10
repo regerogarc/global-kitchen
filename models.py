@@ -29,6 +29,9 @@ class Recipe(models.Model):
     picture = models.ImageField(upload_to= 'user_image_dir', blank=True)
     name = models.CharField(max_length = 100)
 
+    def __str__(self):
+        return self.name
+
     """
     ingredients = models.CharField(max_length = 1000)
     text = models.CharField(max_length = 3000)

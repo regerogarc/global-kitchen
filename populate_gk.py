@@ -36,8 +36,8 @@ def populate():
         userprofile = UserProfile.objects.get_or_create(user = v["author"])[0]
         userprofile.save()
 
-        recipe = Recipe.objects.get_or_create(name = k)[0]
-        recipe.author = userprofile
+        recipe = Recipe.objects.get_or_create(author = userprofile)[0]
+        recipe.name = k
         recipe.recipe_text = v["Text"]
         recipe.country = v["Country"]
         recipe.likes = v["likes"]
