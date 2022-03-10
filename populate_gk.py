@@ -1,5 +1,12 @@
+
+
+### You may need to change the project settings I made this within the tango_with_django project but if you made a new one for global kitchen then you'll need to alter this.
+
+project_settings = 'tango_with_django_project.settings'
+
+
 import os
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tango_with_django_project.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', project_settings )
 import django 
 django.setup()
 from global_kitchen.models import UserProfile, Recipe
@@ -36,8 +43,8 @@ def populate():
         userprofile = UserProfile.objects.get_or_create(user = v["author"])[0]
         userprofile.save()
 
-        recipe = Recipe.objects.get_or_create(name = k)[0]
-        recipe.author = userprofile
+        recipe = Recipe.objects.get_or_create(author = userprofile)[0]
+        recipe.name = k
         recipe.recipe_text = v["Text"]
         recipe.country = v["Country"]
         recipe.likes = v["likes"]
