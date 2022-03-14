@@ -4,16 +4,16 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.urls import reverse
 
-from .models import UserProfile, Recipe, MyAccount
+from .models import UserProfile, Recipe, User
 from .forms import RecipeForm, UserForm, UserProfileForm
 
 
 
-def show_recipe(request, recipe_name_slug):
+def show_recipe(request, recipeID):
     context_dict = {}
 
     try:
-        recipe = Recipe.objects.get(slug=recipe_name_slug)
+        recipe = Recipe.objects.get(id=recipeID)
 
         # pages = Recipe.objects.filter(category=category)
 
@@ -24,23 +24,31 @@ def show_recipe(request, recipe_name_slug):
         context_dict['recipe'] = None
     return render(request, 'rango/recipe.html', context_dict)
 
+def cookbook(request):
+    return render(request, 'rango/CookBook.html')
+
+def profiles(request):
+    return None
+
 @login_required
-def myaccount(request, user, email, country):
+def userpage(request, username_slug):
+
+    # Get logged in user
+    current_user = request.user
     context_dict = {}
+
     try:
-        username = MyAccount.objects.get(user=user)
-        email=MyAccount.obkects.get(email=email)
-        country=MyAccount.objects.get(country=country)
-        context_dict['username'] = username
-        context_dict['email'] = email
-        context_dict['country'] = country
-    except MyAccount.DoesNotExist:
-        context_dict['username'] = None
-        context_dict['email'] =  None
-        context_dict['country'] =  None
-
-
-    return render(request, 'rango/CookBook.html', context_dict)
+        user_page = User.objects.get(username=username_slug)
+    except User.DoesNotExist:
+        # The user does not exist.
+        # Do nothing for now - 
+        pass
+    
+    # Check if the user is trying to view their own account page
+    if current_user.username == user_page.username:
+        return render(request, 'rango/Userpage.html')
+    else:
+        return render(request, 'rango/Userpage.html', context_dict)
 
 def index(request):
 
@@ -55,14 +63,14 @@ def index(request):
     return response
 
 @login_required
-def upload_recipe(request, recipe_name_slug):
+def upload_recipe(request, recipeID):
     form = RecipeForm()
     if request.method == 'POST':
         form = RecipeForm(request.POST)
         if form.is_valid():
             rec = form.save(commit=True)
             print(rec, rec.slug)
-            return redirect(reverse('rango:Uploadrecipe',kwargs={'recipe_name_slug': recipe_name_slug}))
+            return redirect(reverse('rango:Uploadrecipe',kwargs={'recipeID': recipeID}))
         else:
             print(form.errors)
 

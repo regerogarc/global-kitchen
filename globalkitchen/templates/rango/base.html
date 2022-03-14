@@ -32,7 +32,7 @@
         <ul class="one-list">
             <li><h1>Global Kitchen</h1></li>
             <li><a href="{% url 'rango:homepage' %}">Home</a></li>
-            <li><a href="rango/CookBook.html">CookBook</a></li>
+            <li><a href="{% url 'rango:cookbook' %}">CookBook</a></li>
 
             <li>
                 <form class="searchbar">
@@ -54,7 +54,7 @@
         <ul class="one-list">
             <li><h1>Global Kitchen</h1></li>
             <li><a href="{% url 'rango:homepage' %}">Home</a></li>
-            <li><a href="rango/CookBook.html">CookBook</a></li>
+            <li><a href="{% url 'rango:cookbook' %}">CookBook</a></li>
 
             <li>
                 <form class="searchbar">
@@ -62,7 +62,7 @@
                     <button>Search</button>
                 </form>
             </li>
-            <li><a href="{% url 'rango:Userpage' %}">Myaccount</a></li>
+            <li><a href="{% url 'rango:userpage' user.username %}">Myaccount</a></li>
         </ul>
         <ul class="two-list">
             <li><a href="{% url 'rango:restricted' %}">Hi, {{ user.username }}</a></li>
