@@ -1,0 +1,52 @@
+{% extends 'rango/base.html' %}
+
+{% load staticfiles %}
+
+
+{% block extracss %}
+<link href="{% static 'css/LogIn.css' %}" rel="stylesheet" type="text/css">
+{% endblock extracss %}
+
+{% block title_block %}
+    LogIn
+{% endblock %}
+
+{% block body_block %}
+
+<div class="loginWrapper">
+    <h1>Login to Global Kitchen</h1>
+    <form class="LogIn-box" id="login_form" method="post" action="{% url 'rango:login' %}">
+        {% csrf_token %}
+        <div class="usernameLine">
+            <div class="title">
+                Username:
+            </div>
+            <div class="input">
+                <input type="text" name="username" value="" size="20"/>
+            </div>
+        </div>
+
+        <div class="passwordLine">
+            <div class="title">
+                Password:
+            </div>
+            <div class="input">
+                <input type="text" name="password" value="" size="20"/>
+            </div>
+        </div>
+
+        <div class="sentence">
+            <div class="left_part">
+                <p>If you don't have an account, <a href="{% url 'rango:signup' %}">sign up</a> now!</p>
+            </div>
+            <div class="right_part"></div>
+        </div>
+
+        <div class="button">
+            <input type="submit" value="Login" size="50" />
+        </div>
+
+    </form>
+</div>
+
+{% endblock %}

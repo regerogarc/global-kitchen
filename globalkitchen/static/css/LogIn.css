@@ -1,0 +1,97 @@
+body{
+    background-color: #F9F0DA;
+}
+.loginWrapper h1 {
+    width: 900px;
+    line-height: 70px;
+    color: #F9F0DA;
+    margin: 50px;
+    padding-top: 20px;
+    padding-left: 10%;
+    font-size: 60px;
+
+
+}
+
+.loginWrapper {
+    position:relative;
+    width: 900px;
+    height: 500px;
+    background: #6c757d;
+    border-radius: 30px;
+    margin-left:20%;
+    margin-top: 8%;
+
+}
+
+.LogIn-box {
+    margin-left: 25%;
+    font-size: 34px;
+    width: 500px;
+    height: 200px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+.LogIn-box input{
+    border-radius: 30px;
+}
+
+.usernameLine{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+
+.passwordLine {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+.title{
+    display: flex;
+    font-size: 25px;
+    justify-content: center;
+    align-items: center;
+    color: #F9F0DA;
+}
+.input {
+    width:450px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.input input[type="text" i] {
+    padding: 1px 2px;
+    color: #6c757d;
+    font-size: 25px;
+}
+
+.button input{
+    position: absolute;
+    cursor: pointer;
+    color: #6c757d;
+    font-size:25px;
+    background-color: #F9F0DA;
+    padding-right: 15px;
+    text-align: center;
+    right:40px;
+    bottom:50px;
+
+}
+.sentence{
+    display: grid;
+    grid-template-columns: 10fr 1fr;
+}
+
+.left_part{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:24px;
+    color: #F9F0DA;
+}
+.bottom{
+    height: 200px;
+    width: 100%;
+}
+
