@@ -1,0 +1,91 @@
+{% extends 'rango/base.html' %}
+
+{% load staticfiles %}
+
+{% block extracss %}
+ <link href="{% static 'css/Home.css' %}" rel="stylesheet" type="text/css">
+    {% endblock extracss %}
+
+{% block title_block %}
+    Homepage
+{% endblock %}
+
+{% block body_block %}
+
+<header>
+<div class="slide">
+    <div class="images">
+        <!--            <img  src="image/1.JPG" alt="dishes">-->
+        <img src="{% static 'image/2.JPG' %}" alt="dishes">
+        <img src="{% static 'image/3.JPG' %}" alt="dishes">
+        <img src="{% static 'image/4.JPG' %}" alt="dishes">
+        <img src="{% static 'image/5.JPG' %}" alt="dishes">
+        <img src="{% static 'image/6.JPG' %}" alt="dishes">
+        <img src="{% static 'image/7.JPG' %}" alt="dishes">
+        <img src="{% static 'image/8.JPG' %}" alt="dishes">
+        <img src="{% static 'image/9.JPG' %}" alt="dishes">
+        <img src="{% static 'image/10.JPG' %}" alt="dishes">
+        <img src="{% static 'image/1.JPG' %}" alt="dishes">
+
+    </div>
+</div>
+</header>
+
+<div><h2>Most liked recipe</h2></div>
+
+    <div class="container">
+        <div class="aside-left-element"></div>
+
+        <div class="wrap-list-item">
+        <ul class="list-item">
+            <li><img src="{% static 'image/2.JPG' %}" alt="dish"></li>
+            <li><img src="{% static 'image/4.JPG' %}" alt="dish"></li>
+            <li><img src="{% static 'image/6.JPG' %}" alt="dish"></li>
+            <li><img src="{% static 'image/8.JPG' %}" alt="dish"></li>
+            <li><img src="{% static 'image/10.JPG' %}" alt="dish"></li>
+            <li><img src="{% static 'image/1.JPG' %}" alt="dish"></li>
+
+        </ul>
+        </div>
+
+        <div class="aside-right-element"></div>
+    </div>
+
+
+<div><h3>Most viewed recipe </h3></div>
+<div class="container">
+    <div class="aside-left-element"></div>
+
+    <div class="wrap-list-item">
+    <ul class="list-item">
+            <li><img src="{% static 'image/1.JPG' %}" alt="dish"></li>
+            <li><img src="{% static 'image/3.JPG' %}" alt="dish"></li>
+            <li><img src="{% static 'image/5.JPG' %}" alt="dish"></li>
+            <li><img src="{% static 'image/7.JPG' %}" alt="dish"></li>
+            <li><img src="{% static 'image/9.JPG' %}" alt="dish"></li>
+            <li><img src="{% static 'image/1.JPG' %}" alt="dish"></li>
+
+
+    </ul>
+    </div>
+    <div class="aside-right-element"></div>
+</div>
+
+<div><h4>Recommended ingredients website </h4></div>
+<div class="container">
+    <div class="aside-left-element"></div>
+
+    <div class="wrap-grid-item">
+    <ul class="grid-item">
+        <li><a href="https://www.buywholefoodsonline.co.uk/">BuyWholefoods</a></li>
+        <li><a href="https://starrymart.co.uk/">starrymart</a></li>
+        <li><a href="https://shop.wattsfarms.co.uk/">wattsfarms</a> </li>
+        <li><a href="https://www.fishforthought.co.uk/">fishforthought</a></li>
+        <li><a href="https://www.eatgreatmeat.co.uk/">eatgreatmeat</a></li>
+        <li><a href="https://groceries.morrisons.com/webshop/startWebshop.do">Morrisons</a></li>
+    </ul>
+    </div>
+    <div class="aside-right-element"></div>
+</div>
+
+{% endblock %}

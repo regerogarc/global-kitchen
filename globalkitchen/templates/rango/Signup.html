@@ -1,0 +1,79 @@
+{% extends 'rango/base.html' %}
+
+{% load staticfiles %}
+
+{% block extracss %}
+<link href="{% static 'css/Signup.css' %}" rel="stylesheet" type="text/css">
+    {% endblock extracss %}
+
+{% block title_block %}
+    Signup
+{% endblock %}
+
+{% block body_block %}
+
+
+<div class="SignupWrapper">
+    <h1>Sign up to Global Kitchen</h1>
+    <form class="Signup-box" id="user_form" method="post" action="{% url 'rango:signup' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+<!--         {{ user_form.as_p }}-->
+<!--        {{ profile_form.as_p }}-->
+
+        <div class="usernameLine">
+            <div class="title">
+                Username:
+            </div>
+            <div class="input">
+                <input type="text" name="username" value="" size="25"/>
+            </div>
+        </div>
+
+        <div class="passwordLine">
+            <div class="title">
+                Password:
+            </div>
+            <div class="input">
+                <input type="text" name="password" value="" size="25"/>
+            </div>
+        </div>
+
+        <div class="passwordLine">
+            <div class="title">
+                Confirm password:
+            </div>
+            <div class="input">
+                <input type="text" name="password" value="" size="25"/>
+            </div>
+        </div>
+
+        <div class="emailLine">
+            <div class="title">
+                Email:
+            </div>
+            <div class="input">
+                <input type="text" name="email" value="" size="25"/>
+            </div>
+        </div>
+
+        <div class="sentence">
+            <div class="left_part">
+                <p>If you already have an account, <a href="{% url 'rango:login' %}">login</a> now!</p>
+            </div>
+            <div class="right_part"></div>
+        </div>
+
+        <div class="button">
+            <input type="submit" value="submit" size="50" />
+        </div>
+
+    </form>
+
+
+
+</div>
+
+<div class="button"></div>
+
+
+{% endblock %}

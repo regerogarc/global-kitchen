@@ -1,0 +1,79 @@
+{% extends 'rango/base.html' %}
+
+{% load staticfiles %}
+
+{% block extracss %}
+<link href="{% static 'css/CookBook.css' %}" rel="stylesheet" type="text/css">
+{% endblock extracss %}
+
+{% block title_block %}
+    cookbook
+{% endblock %}
+
+{% block body_block %}
+
+<body>
+
+<header>
+    <div class="header">
+        <h1>Total recipes</h1>
+    </div>
+</header>
+
+<div class="container">
+    <div class="aside-left-element">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="">Ukraine</a>
+            <a href="">China</a>
+            <a href="">Japan</a>
+            <a href="">Italy</a>
+        </div>
+
+        <h2>countries</h2>
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; > </span>
+
+        <script>
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+            }
+        </script>
+    </div>
+
+    <div class="wrap-list-item">
+        <ul class="list-item">
+            <div class="recipe-image">
+                <li><img src="image/2.JPG" alt="dish"></li>
+                <li><img src="image/4.JPG" alt="dish"></li>
+                <li><img src="image/6.JPG" alt="dish"></li>
+                <li><img src="image/8.JPG" alt="dish"></li>
+                <li><img src="image/9.JPG" alt="dish"></li>
+                <li><img src="image/10.JPG" alt="dish"></li>
+            </div>
+            <div class="recipe-name">
+                <a href="">{{user_file.name}}</a>
+            </div>
+        </ul>
+    </div>
+
+    <div class="aside-right-element"></div>
+</div>
+
+<!--分页-->
+<ul class="pagination">
+    <li><a href="">«</a></li>
+    <li><a class="active" href="">1</a></li>
+    <li><a href="">2</a></li>
+    <li><a href="">3</a></li>
+    <li><a href="">4</a></li>
+    <li><a href="">5</a></li>
+    <li><a href="">6</a></li>
+    <li><a href="">7</a></li>
+    <li><a href="">»</a></li>
+</ul>
+
+{% endblock %}

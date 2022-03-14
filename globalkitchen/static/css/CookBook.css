@@ -1,0 +1,150 @@
+header {
+    width: 100%;
+    height: 60px;
+    overflow: hidden;
+    padding: 40px;
+    background: #d9925f;
+}
+
+.header h1{
+    font-size: 35px;
+    padding-left: 570px;
+}
+@keyframes picturemove {
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-50%);
+    }
+}
+
+.container{
+    width:100%;
+    justify-items: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns:20% 70% 10%;
+    grid-column-gap: 10px;
+}
+
+.list-item li img{
+    width: 250px;
+    height: 180px;
+    float: left;
+    margin: 5px;
+    text-align: center;
+    /*border: 20px solid #d36f51;*/
+}
+.list-item li{
+    width: 300px;
+    height: 300px;
+    /*border: 20px solid #d36f51;*/
+    margin: 10px;
+    /*display: grid;*/
+    /*grid-template-rows: 75% 25%;*/
+}
+
+
+.grid-item li{
+    width: 350px;
+    height: 350px;
+    float: start;
+    margin-bottom: 25px;
+    background-color: #debd7c;
+    text-align: center;
+    border-radius: 4px;
+}
+.grid-item li a{
+    margin: 20px;
+    padding-top: 80px;
+    color:#debd7c;
+    font-size: 30px;
+}
+.grid-item li:hover{
+    background-color: #a8573f;
+
+}
+
+
+ul.pagination {
+    display: inline-block;
+    padding-left: 300px;
+    margin: 0;
+}
+
+ul.pagination li {display: inline;
+    padding-left: 40px;
+}
+
+ul.pagination li a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color .3s;
+    font-size: 22px;
+}
+
+ul.pagination li a.active {
+    background-color: #d36f51;
+    color: white;
+    border-radius: 5px;
+}
+ul.pagination li a:hover:not(.active){background-color: #ddd;}
+
+footer{
+    width: 100%;
+    height: 125px;
+    background-color:#a8573f;
+}
+footer p{
+    text-align: center;
+    color: white;
+    line-height: 40px;
+    font-size: 20px;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #6c757d;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #f1cf8b;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 300px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
