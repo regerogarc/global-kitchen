@@ -1,3 +1,5 @@
+# Authored by: Michael Twaddle(2541816t),
+
 from django import forms
 from global_kitchen.models import UserProfile, Recipe
 import json
@@ -12,20 +14,18 @@ class UserForm(forms.ModelForm):
 class RecipeForm(forms.ModelForm):
     name = forms.CharField(max_length = 100, help_text="Enter the name of the recipe.")
     recipe_text = RecipeTextField()
-    #country = 
+    likes = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
+    country = forms.CharField(max_length = 100, help_text="Enter the name of the recipe.", default = "Scotland")
 
     class Meta:
         model = Recipe
-        exclude = ("country", )
-
-
+        exclude = ("author")
 
 
 
 class RecipeTextField(forms.MultiValueField):
 
     widget = RecipeTextWidget
-
 
     def __init__(self, **kwargs):
 
