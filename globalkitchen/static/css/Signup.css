@@ -1,0 +1,110 @@
+body {
+    background-color: #6c757d
+}
+.SignupWrapper h1 {
+    width: 900px;
+    line-height: 70px;
+    color: #6c757d;
+    margin: 50px;
+    padding-top: 20px;
+    padding-left: 10%;
+    font-size: 60px;
+
+
+}
+.Signup-box {
+    padding-left: 210px;
+    display:grid;
+    grid-template-rows:60px 60px 60px 60px;
+    grid-row-gap: 5px;
+}
+.SignupWrapper {
+    position:relative;
+    width: 900px;
+    height: 500px;
+    background: #F9F0DA;
+    border-radius: 30px;
+    margin-left:20%;
+    margin-top: 8%;
+
+}
+
+/*.Signup-box {*/
+/*    margin-left: 25%;*/
+/*    font-size: 34px;*/
+/*    width: 500px;*/
+/*    height: 200px;*/
+/*    display: grid;*/
+/*    grid-template-rows: 1fr 1fr 1fr;*/
+/*}*/
+.LogIn-box input{
+    border-radius: 30px;
+}
+
+.usernameLine{
+    display: grid;
+    grid-template-columns: 120px 60px;
+
+}
+
+.passwordLine {
+    /*font-size: 80px;*/
+    display: grid;
+    grid-template-columns: 120px 60px;
+
+}
+
+.emailLine {
+    display: grid;
+    grid-template-columns: 120px 60px;
+}
+
+.title{
+    display: grid;
+    grid-template-columns: 200px auto;
+    justify-content: center;
+    align-items: center;
+    color: #6c757d;
+    font-size: 20px;
+}
+.input {
+    font-size: 40px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.input input[type="text" i] {
+    padding: 1px 2px;
+    color: #6c757d;
+    font-size: 25px;
+}
+
+.button input{
+    position: absolute;
+    cursor: pointer;
+    color: #F9F0DA;
+    font-size:25px;
+    background-color: #6c757d;
+    padding-right: 15px;
+    text-align: center;
+    right:40px;
+    bottom:50px;
+
+}
+.sentence{
+    display: grid;
+    grid-template-columns: 10fr 1fr;
+}
+
+.left_part{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:24px;
+    color: #6c757d;
+}
+.bottom{
+    height: 200px;
+    width: 100%;
+}
+

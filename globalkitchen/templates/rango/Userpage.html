@@ -1,0 +1,66 @@
+{% extends 'rango/base.html' %}
+
+{% load staticfiles %}
+
+{% block extracss %}
+<link href="{% static 'css/Userpage.css' %}" rel="stylesheet" type="text/css">
+{% endblock extracss %}
+
+{% block title_block %}
+Userpage
+{% endblock %}
+
+{% block body_block %}
+
+<body>
+<div class="profile-wrapper">
+    <div class="aside-top-left">1</div>
+
+    <div class="user-profile">
+        <div class="column-1">
+<<<<<<< HEAD
+            <div><h2>{{ user_file.username }}</h2></div>
+            <div><p>Country: {{ user_file.country }}</p></div>
+            <div><p>Email: {{ user_file.email }}</p></div>
+=======
+            <div><h2>{{ user.username }}</h2></div>
+            <div><p>Country: {{ user.country }}</p></div>
+            <div><p>Email: {{ user.email }}</p></div>
+>>>>>>> finlay
+            <div><p>Personal Information {{ user_file.personalInfo }}</p></div>
+        </div>
+        <div class="column-2">
+            <div class="input-picture">
+                <input type="file" value="File" id="input_pic" accept="image/jpeg">
+                <label for="input_pic" id="upload-pic">Choose File</label></div>
+        </div>
+
+    </div>
+
+    <div class="aside-top-right">3</div>
+
+    <div class="aside-top-left">4</div>
+
+    <div class="like-file">
+        <div><h2>My favourites:</h2></div>
+        <!--        <div class="add-to-favourties">5</div>-->
+    </div>
+
+    <div class="aside-top-right">6</div>
+    <div class="aside-top-left">7</div>
+
+    <div class="my-recipe">
+        <div><h2>My Recipe:</h2></div>
+        <div><a href="Uploadrecipe.html" alt="upload"><input name="Button" type="button" value="Upload here!"></a></div>
+        <div class="put-my-recipe"></div>
+
+    </div>
+
+    <div class="aside-top-right">9</div>
+
+</div>
+
+
+</body>
+
+{% endblock %}

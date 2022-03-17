@@ -1,0 +1,105 @@
+.profile-wrapper{
+    display:grid;
+    grid-template-columns: 10% auto 10%;
+    grid-template-rows: 400px 400px 700px;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    background-image: url("globalkitchen/12.JPG");
+    color: #F9F0DA;
+    /*margin: 30px 30px;*/
+}
+.user-profile {
+    height:300px;
+    margin-top:100px;
+    background-color: #6c757d;
+    display:grid;
+    grid-template-columns: 780px auto;
+    grid-template-rows: 300px;
+
+
+}
+h2{
+    width:500px;
+    font-size:40px;
+    text-align: start;
+    /*color: #F9F0DA;*/
+    margin: 30px 30px;
+}
+p {
+    font-size: 30px;
+    margin: 0px 30px;
+}
+.input-picture {
+    width: 200px;
+    height: 200px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    margin-left: 50px;
+    border-radius: 30px;
+    background-color: #c6d7e7;
+    border: 5px solid #6c757d;
+
+
+}
+#input_pic {
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+#upload-pic {
+    width: 200px;
+    height:200px;
+    border-radius: 30px;
+    margin:20px;
+    font-size: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: #4a5056;
+
+
+}
+.input-picture:hover {
+    background-color: #F9F0DA;
+}
+
+.my-recipe{
+    height:600px;
+    display:grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 200px 400px;
+    background-color: #6c757d;
+}
+.my-recipe input {
+    margin: 10px 20px;
+    float: right;
+    width: 150px;
+    height: 40px;
+}
+
+.my-recipe input:hover {
+    background-color: #a8c9ba;
+}
+.put-my-recipe{
+    grid-column: 1 / span 2;
+}
+
+.like-file {
+    height:400px;
+    display:grid;
+    grid-template-columns: auto;
+    grid-template-rows: 100px 400px;
+    background-color: #6c757d;
+}
+
+.add-to-favourties {
+    height: 300px;
+    display: grid;
+    grid-template-columns: 255px;
+    grid-column-gap: 10px;
+}
+
+

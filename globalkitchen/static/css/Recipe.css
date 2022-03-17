@@ -1,0 +1,231 @@
+.header {
+    width: 100%;
+    height:146px;
+    display: flex;
+    justify-content: center;
+    background-color: #6c757d
+}
+
+.header h1 {
+    color: #F9F0DA;
+    /*color: #d36f51;*/
+    margin-top: 50px;
+    font-size: 40px;
+    text-align: center;
+    text-decoration: 2px underline;
+    /*background: #6c757d;*/
+
+}
+
+.background {
+    height: 1400px;
+    display: flex;
+}
+
+
+
+.grid-container {
+    display: grid;
+    width: 100%;
+    /*height: 1500px;*/
+    grid-template-columns: 10% auto auto 10%;
+    grid-template-rows: 1180px;
+    grid-gap: 40px;
+    grid-row-gap: 40px;
+    background-image: url("globalkitchen/12.JPG");
+    padding: 10px;
+
+}
+#page form{
+    width: 100%;
+    height:1380px;
+}
+.form-wrapper {
+    display:grid;
+    grid-template-columns: auto auto;
+    grid-template-rows:80px 550px 300px 300px;
+    grid-row-gap: 17px;
+}
+.username {
+    background-color: #6c757d;
+    width:400px;
+    margin-left: 55px;
+    padding-left: 40px;
+    align-items: center;
+    /*margin:40px 175px 0px 175px;*/
+}
+.recipe-country {
+    background-color: #6c757d;
+    width: 400px;
+    align-items: center;
+    /*margin:40px 175px 0px 175px;*/
+    justify-content: center;
+    align-items: center;
+}
+
+.picture {
+    width: 400px;
+    height: 400px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    margin-left: 50px;
+    border-radius: 30px;
+    background-color: #6c757d;
+
+
+
+}
+
+#upload-image {
+    width: 120px;
+    border-radius: 30px;
+    font-size: 20px;
+    text-align: center;
+    color: #F9F0DA;
+
+}
+
+.input-picture:hover {
+    background-color: #a8c9ba;
+}
+
+.text_container {
+    width: 400px;
+    height: 450px;
+    display: grid;
+    grid-template-rows: 50px auto;
+    justify-content: center;
+    /*margin: 50px;*/
+
+    background-color: #6c757d;
+    border-radius: 30px;
+
+}
+
+/*.text_container form {*/
+/*    justify-content: center;*/
+/*    padding-top: 20px;*/
+/*}*/
+/*.text_container div {*/
+/*    width: 200px;*/
+/*    height:50px;*/
+/*}*/
+
+.text_container h2 {
+    width: 200px;
+    height:50px;
+    /*margin:20px 50px;*/
+    margin-top: 20px;
+    /*margin-bottom: 20px;*/
+    text-decoration: underline;
+    font-size:26px;
+    color:  #F9F0DA;
+}
+
+.text div {
+    width:300px;
+    height:350px;
+    /*margin:30px 0px;*/
+    color: #F9F0DA;
+    /*border-radius: 30px;*/
+    font-size: 21px;
+
+}
+
+input {
+    text-align: center;
+    border-radius: 30px;
+    font-size: 20px;
+    color: #6c757d;
+    cursor: auto;
+    width: 150px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background: #F9F0DA;
+
+}
+.description-container {
+    grid-column: 1/span 2;
+    width: 940px;
+    height: 275px;
+    display: grid;
+    justify-content: center;
+    margin: 0 50px;
+    background-color: #6c757d;
+    border-radius: 30px;
+
+}
+.description-container h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-decoration: underline;
+    /*color: #681414;*/
+    color:#F9F0DA;
+}
+
+#input-text-describe {
+    background-color: #F9F0DA;
+    border-radius: 30px;
+    font-size: 21px;
+    width: 900px;
+    height: 167px;
+}
+
+.process-container {
+    grid-column: 1/span 2;
+    width: 940px;
+    height: 300px;
+    display: grid;
+    justify-content: center;
+    margin: 0 50px;
+    background-color: #6c757d;
+    border-radius: 30px;
+
+}
+
+
+.process-container h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-decoration: underline;
+    color:#F9F0DA;
+}
+
+#input-text-cooking {
+    background-color: #F9F0DA;
+    font-size: 21px;
+    width: 900px;
+    height: 167px;
+    border-radius: 20px;
+}
+
+.like-view {
+    height: 40px;
+    width: 300px;
+    margin-top: 30px;
+    margin-left: 95px;
+    background-color: #F9F0DA;
+    border-radius: 25px;
+}
+.like{
+    color: #6c757d;
+    font-size: 25px;
+    padding-left: 50px;
+}
+.like:hover{
+   color: #d36f51;
+}
+.view{
+    color: #6c757d;
+    font-size: 25px;
+    padding-left: 90px;
+}
+.view:hover{
+     color: #d36f51;
+ }
+.clear{
+    clear:both;
+}

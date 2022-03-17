@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="{% static 'css/Style.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/Home.css' %}" rel="stylesheet" type="text/css">
+
+<!--    <link href="{% static 'css/Signup.css' %}" rel="stylesheet" type="text/css">-->
+<!--    <link href="{% static 'css/Upload.css' %}" rel="stylesheet" type="text/css">-->
+<!--    <link href="{% static 'css/Userpage.css' %}" rel="stylesheet" type="text/css">-->
+<!--     <link href="{% static 'css/Recipe.css' %}" rel="stylesheet" type="text/css">-->
+
+{% block extracss %}
+
+{% endblock extracss %}
+
+
+    <title>
+        {% block title_block %}
+        Global kitchen
+        {% endblock %}
+    </title>
+</head>
+
+{% block nav_block %}
+<nav>
+    {% if not user.is_authenticated %}
+    <div class="navbar">
+        <ul class="one-list">
+            <li><h1>Global Kitchen</h1></li>
+            <li><a href="{% url 'rango:homepage' %}">Home</a></li>
+<<<<<<< HEAD
+            <li><a href="rango/CookBook.html">CookBook</a></li>
+=======
+            <li><a href="{% url 'rango:cookbook' %}">CookBook</a></li>
+>>>>>>> finlay
+
+            <li>
+                <form class="searchbar">
+                    <input type="text" name="text" placeholder="Search here!">
+                    <button>Search</button>
+                </form>
+            </li>
+<!--            <li><a href="{% url 'rango:Userpage' %}">Myaccount</a></li>-->
+        </ul>
+        <ul class="two-list">
+            <li><a href="{% url 'rango:signup' %}">Sign up</a></li>
+            <li><a href="{% url 'rango:login' %}">Log in</a></li>
+        </ul>
+    </div>
+</nav>
+    {% else %}
+<nav>
+    <div class="navbar">
+        <ul class="one-list">
+            <li><h1>Global Kitchen</h1></li>
+            <li><a href="{% url 'rango:homepage' %}">Home</a></li>
+<<<<<<< HEAD
+            <li><a href="rango/CookBook.html">CookBook</a></li>
+=======
+            <li><a href="{% url 'rango:cookbook' %}">CookBook</a></li>
+>>>>>>> finlay
+
+            <li>
+                <form class="searchbar">
+                    <input type="text" name="text" placeholder="Search here!">
+                    <button>Search</button>
+                </form>
+            </li>
+<<<<<<< HEAD
+            <li><a href="{% url 'rango:Userpage' %}">Myaccount</a></li>
+=======
+            <li><a href="{% url 'rango:userpage' user.username %}">Myaccount</a></li>
+>>>>>>> finlay
+        </ul>
+        <ul class="two-list">
+            <li><a href="{% url 'rango:restricted' %}">Hi, {{ user.username }}</a></li>
+            <li><a href="{% url 'rango:logout' %}">Log out</a></li>
+        </ul>
+    </div>
+</nav>
+
+{% endif %}
+{% endblock  %}
+
+
+<body>
+<div>
+    {% block body_block%}
+
+    {% endblock %}
+</div>
+
+
+
+
+
+    {% block bottombar_block %}
+    <footer>
+
+        <p>Global kitchen <br> --Lab Group 4 Team C<br>
+            --Finlay, Xinuo, Jiarui, Michael, Jamie
+        </p>
+    </footer>
+
+    {% endblock %}
+
+
+</body>
+
+</html>
