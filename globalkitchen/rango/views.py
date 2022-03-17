@@ -4,16 +4,28 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.urls import reverse
 
+<<<<<<< HEAD
 from .models import UserProfile, Recipe, MyAccount
+=======
+from .models import UserProfile, Recipe, User
+>>>>>>> finlay
 from .forms import RecipeForm, UserForm, UserProfileForm
 
 
 
+<<<<<<< HEAD
 def show_recipe(request, recipe_name_slug):
     context_dict = {}
 
     try:
         recipe = Recipe.objects.get(slug=recipe_name_slug)
+=======
+def show_recipe(request, recipeID):
+    context_dict = {}
+
+    try:
+        recipe = Recipe.objects.get(id=recipeID)
+>>>>>>> finlay
 
         # pages = Recipe.objects.filter(category=category)
 
@@ -24,6 +36,7 @@ def show_recipe(request, recipe_name_slug):
         context_dict['recipe'] = None
     return render(request, 'rango/recipe.html', context_dict)
 
+<<<<<<< HEAD
 @login_required
 def myaccount(request, user, email, country):
     context_dict = {}
@@ -41,6 +54,33 @@ def myaccount(request, user, email, country):
 
 
     return render(request, 'rango/CookBook.html', context_dict)
+=======
+def cookbook(request):
+    return render(request, 'rango/CookBook.html')
+
+def profiles(request):
+    return None
+
+@login_required
+def userpage(request, username_slug):
+
+    # Get logged in user
+    current_user = request.user
+    context_dict = {}
+
+    try:
+        user_page = User.objects.get(username=username_slug)
+    except User.DoesNotExist:
+        # The user does not exist.
+        # Do nothing for now - 
+        pass
+    
+    # Check if the user is trying to view their own account page
+    if current_user.username == user_page.username:
+        return render(request, 'rango/Userpage.html')
+    else:
+        return render(request, 'rango/Userpage.html', context_dict)
+>>>>>>> finlay
 
 def index(request):
 
@@ -55,14 +95,22 @@ def index(request):
     return response
 
 @login_required
+<<<<<<< HEAD
 def upload_recipe(request, recipe_name_slug):
+=======
+def upload_recipe(request, recipeID):
+>>>>>>> finlay
     form = RecipeForm()
     if request.method == 'POST':
         form = RecipeForm(request.POST)
         if form.is_valid():
             rec = form.save(commit=True)
             print(rec, rec.slug)
+<<<<<<< HEAD
             return redirect(reverse('rango:Uploadrecipe',kwargs={'recipe_name_slug': recipe_name_slug}))
+=======
+            return redirect(reverse('rango:Uploadrecipe',kwargs={'recipeID': recipeID}))
+>>>>>>> finlay
         else:
             print(form.errors)
 
