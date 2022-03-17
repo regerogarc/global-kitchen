@@ -4,12 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from global_kitchen.Countries import COUNTRY_CHOICES
 
-def get_countries():
-    reader = csv.reader(open('countries.csv'))
-    results = []
-    for row in reader:
-        results.append((row[0],row[1]))
-    return tuple(results)
+
 
 def user_image_dir(instance, filename):
     return "user_images/user_{0}/{1}".format(instance.user.id,filename)
