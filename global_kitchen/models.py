@@ -13,7 +13,7 @@ def get_countries():
 
 def user_image_dir(instance, filename):
     return "user_images/user_{0}/{1}".format(instance.user.id,filename)
-def user_image_dir(instance, filename):
+def recipe_image_dir(instance, filename):
     return "recipe_images/recipe_{0}/{1}".format(instance.id,filename)
 
 
@@ -34,7 +34,7 @@ class Recipe(models.Model):
     recipe_text = models.CharField(max_length=4096)
     country = models.CharField(choices = COUNTRY_CHOICES, max_length = 60)
     likes = models.IntegerField(default = 0)
-    picture = models.ImageField(upload_to= 'user_image_dir', blank=True)
+    picture = models.ImageField(upload_to= 'recipe_image_dir', blank=True)
     name = models.CharField(max_length = 100)
 
     def __str__(self):
