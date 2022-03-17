@@ -27,6 +27,7 @@ class RecipeForm(forms.ModelForm):
     name = forms.CharField(max_length = 100, help_text="Enter the name of the recipe.", requried = True)
     recipe_text = RecipeTextField()
     likes = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
+    views = forms.IntegerField(widget = forms.HiddenInput(),initial = 0)
     country = forms.ChoiceField(choices = COUNTRY_CHOICES, label = "Country", widget = forms.Select(),required = True )
 
     class Meta:

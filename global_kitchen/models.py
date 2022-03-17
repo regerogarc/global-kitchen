@@ -36,6 +36,7 @@ class Recipe(models.Model):
     likes = models.IntegerField(default = 0)
     picture = models.ImageField(upload_to= 'recipe_image_dir', blank=True)
     name = models.CharField(max_length = 100)
+    views = models.IntegerField(default = 0)
 
     def __str__(self):
         return self.name
