@@ -2,7 +2,7 @@
 
 from django.db import models
 from django.contrib.auth.models import User
-from global_kitchen.Countries import COUNTRY_CHOICES
+from rango.Countries import COUNTRY_CHOICES
 
 
 
