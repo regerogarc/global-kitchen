@@ -2,14 +2,14 @@
 
 ### You may need to change the project settings I made this within the tango_with_django project but if you made a new one for global kitchen then you'll need to alter this.
 
-project_settings = 'tango_with_django_project.settings'
+project_settings = 'globalkitchen.settings'
 
 
 import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', project_settings )
 import django 
 django.setup()
-from global_kitchen.models import UserProfile, Recipe
+from rango.models import UserProfile, Recipe
 from django.contrib.auth.models import User
 import random
 import string

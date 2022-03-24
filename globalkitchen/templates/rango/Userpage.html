@@ -45,7 +45,7 @@ Userpage
 
     <div class="my-recipe">
         <div><h2>My Recipe:</h2></div>
-        <div><a href="Uploadrecipe.html" alt="upload"><input name="Button" type="button" value="Upload here!"></a></div>
+        <div><a href="{% url 'rango:upload_recipe' user.username %}" alt="upload"><input name="Button" type="button" value="Upload here!"></a></div>
         <div class="put-my-recipe"></div>
 
     </div>
