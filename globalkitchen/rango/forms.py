@@ -15,10 +15,10 @@ class RecipeTextWidget(forms.MultiWidget):
             ]
         super(RecipeTextWidget, self).__init__(*args,widgets = self.widgets,**kwargs)
 
-        def decompress(self, value):
-            if value:
-                return value.split(' ')
-            return [None, None]
+    def decompress(self, value):
+        if value:
+            return value.split(' ')
+        return [None, None]
 
 class RecipeTextField(forms.MultiValueField):
 

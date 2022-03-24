@@ -25,7 +25,10 @@ def show_recipe(request, recipeID):
 
 
 def cookbook(request):
-    return render(request, 'rango/CookBook.html')
+    recipe_list = Recipe.objects.order_by('-likes')[:6]
+    context_dict = {}
+    context_dict["recipes"] = recipe_list
+    return render(request, 'rango/CookBook.html',context=context_dict)
 
 def profiles(request):
     return None
@@ -64,14 +67,29 @@ def index(request):
 
 @login_required
 
-def upload_recipe(request, recipeID):
+def upload_recipe(request, username_slug):
+    try:
+        user_profile = UserProfile.objects.get(user = request.user)
+    except user_profile.DoesNotExist:
+        print("Failed")
+
+    for filename, file in request.FILES.items():
+        print(request.FILES[filename].name)
+
     form = RecipeForm()
     if request.method == 'POST':
         form = RecipeForm(request.POST)
         if form.is_valid():
-            rec = form.save(commit=True)
-            print(rec, rec.slug)
-            return redirect(reverse('rango:Uploadrecipe',kwargs={'recipeID': recipeID}))
+            form.author = user_profile
+            rec = form.save(commit=False)
+            rec.author = user_profile
+            if  'picture' in request.FILES:
+                rec.picture = request.FILES['picture']
+
+
+            #form.save(commit = True)
+            rec.save()
+            return redirect(reverse('rango:upload_recipe',kwargs={"username_slug":username_slug}))
         else:
             print(form.errors)
 
@@ -79,7 +97,7 @@ def upload_recipe(request, recipeID):
             return reverse('rango:Login')
 
     if request.user.is_authenticated:
-        reverse('rango:Uploadrecipe')
+        reverse('rango:upload_recipe',kwargs={"username_slug":username_slug})
 
     return render(request, 'rango/Uploadrecipe.html', {'form': form})
 

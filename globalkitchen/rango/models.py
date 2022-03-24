@@ -8,6 +8,7 @@ from rango.Countries import COUNTRY_CHOICES
 
 def user_image_dir(instance, filename):
     return "user_images/user_{0}/{1}".format(instance.user.id,filename)
+
 def recipe_image_dir(instance, filename):
     return "recipe_images/recipe_{0}/{1}".format(instance.id,filename)
 

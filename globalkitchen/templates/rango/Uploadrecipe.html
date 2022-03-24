@@ -24,61 +24,63 @@
 
         <div class="aside-left"></div>
 
-        <form id="upload-page">
+        <form id="upload-page" method="POST" action="{% url 'rango:upload_recipe' user.username %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+            {% endfor %}
+
+
             <div class="form-wrapper">
 
-        <div class="entry-name">
-            <input type="text" name="text" placeholder="Enter recipe">
+                <div class="entry-name">
+                    {{form.name}}
+                    <!--<input type="text" name="name" placeholder="Enter recipe">-->
 
-        </div>
+                </div>
 
-        <div class="entry-country">
-            <input type="text" name="text" placeholder="Enter country">
+                <div class="entry-country">
+                    <!--<input type="text" name="country" placeholder="Enter country">-->
+                    {{form.country}}
 
-        </div>
+                </div>
 
-        <div class="picture-container">
-            <div class="input-picture">
-                <input type="file" value="File" id="input_image" accept="image/jpeg">
-                <label for="input_image" id="upload-image">Choose File</label></div>
-        </div>
+                <div class="picture-container">
+                    <div class="input-picture">
+                        {{form.picture}}
+                        <!--<input type="file" value="File" id="input_image" accept="image/jpeg">-->
+                        <label for="input_image" id="upload-image">Choose File</label>
 
-        <div class="text_container">
-<!--            <form>-->
-            <div><h2>Ingredients : <br/></h2></div>
+                    </div>
+                </div>
 
-                <textarea rows="13" cols="25" name="ingredients " placeholder=" Enter ingredients here:"
-                          id="input-text"></textarea>
-<!--                <div class="button-position"><input name="Button" type="button" value="submit"></div>-->
-                <!--onclick="add_ingredient">-->
-<!--            </form>-->
+                <div class="text_container">
+                    <!--            <form>-->
+                    <div><h2>Ingredients : <br /></h2></div>
 
-        </div>
+                    <!--<textarea rows="13" cols="25" name="ingredients" placeholder=" Enter ingredients here:"
+                                     id="input-text"></textarea>-->
+                    {{form.recipe_text}}
+                    <!--                <div class="button-position"><input name="Button" type="button" value="submit"></div>-->
+                    <!--onclick="add_ingredient">-->
+                    <!--            </form>-->
 
-        <div class="description-container">
-<!--            <form>-->
-                <div><h2>Description : <br/></h2></div>
+                </div>
 
-                <textarea rows="11" cols="100" name="ingredients " placeholder=" Enter description here:"
-                          id="input-text-describe"></textarea>
-<!--                <div class="button-position-2"><input name="Button" type="button" value="submit"></div>-->
-                <!--onclick="add_ingredient">-->
 
-<!--            </form>-->
-        </div>
 
-        <div class="process-container">
-                <div><h2>Instructions : <br/></h2></div>
+                <div class="process-container">
+                    <!--<div><h2>Instructions : <br /></h2></div>-->
 
-                <textarea rows="11" cols="100" name="ingredients " placeholder=" Enter steps here:"
-                          id="input-text-cooking"></textarea>
-                <div class="button-position"><input name="Button" type="button" value="submit"></div>
-                <!--onclick="add_ingredient">-->
+                    <!--<textarea rows="11" cols="100" name="instructions" placeholder=" Enter steps here:"
+                     id="input-text-cooking"></textarea>-->
+                    <div class="button-position"><input name="Button" type="submit" value="submit"></div>
+                    <!--onclick="add_ingredient">-->
 
-        </div>
+                </div>
             </div>
 
-    </form>
+        </form>
         <div class="aside-right"></div>
 
     </div>
