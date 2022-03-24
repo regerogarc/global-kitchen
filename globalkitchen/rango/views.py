@@ -61,8 +61,8 @@ def index(request):
     context_dict = {}
 
     context_dict['recipe_likes'] = recipe_list_1
-    context_dict['recipe_views'] =recipe_list_2
-    response = render(request, 'rango/homepage.html')
+    context_dict['recipe_views'] = recipe_list_2
+    response = render(request, 'rango/homepage.html', context_dict)
     return response
 
 @login_required
@@ -83,11 +83,9 @@ def upload_recipe(request, username_slug):
             form.author = user_profile
             rec = form.save(commit=False)
             rec.author = user_profile
+            rec.save() # Save first sp recipe get an ID.
             if  'picture' in request.FILES:
                 rec.picture = request.FILES['picture']
-
-
-            #form.save(commit = True)
             rec.save()
             return redirect(reverse('rango:upload_recipe',kwargs={"username_slug":username_slug}))
         else:

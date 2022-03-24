@@ -31,13 +31,14 @@ def populate():
         user_list.append(user)
         user.save()
 
-    recipes = { "Pizza": {"Text": "{'Ingredients': 'eggs, flour, water, tomaotes, sugar, cheese', 'Instructions' : 'Use ingredients to make pizza'}", "Country":"Italy", "author": user_list[0],"likes": 100},
-               "Soup": {"Text": "{'Ingredients': 'vegetables, water', 'Instructions' : 'cook vegetables in water'}", "Country":"France", "author": user_list[1],"likes": 10},
-               "Sushi": {"Text": "{'Ingredients': 'fish', 'Instructions' : 'train for 20 years'}", "Country":"Japan", "author": user_list[2],"likes": 44},
-               "Haggis": {"Text": "{'Ingredients': 'sheeps intestines', 'Instructions' : 'Don't'}", "Country":"Scotland", "author": user_list[3],"likes": 1000},
-               "Borscht": {"Text": "{'Ingredients': 'beetroot, meat, vegetables', 'Instructions' : 'combine and cook'}", "Country":"Ukrain", "author": user_list[4],"likes": 1000},
-               "Hot pot": {"Text": "{'Ingredients': 'Meat, vegetables', 'Instructions' : 'throw in pot and add hot'}", "Country":"China", "author": user_list[5],"likes": 1000},
+    recipes = { "Pizza": {"Text": "{'Ingredients': 'eggs, flour, water, tomaotes, sugar, cheese', 'Instructions' : 'Use ingredients to make pizza'}", "Country":"Italy", "author": user_list[0],"likes": 100,"views":200,"picture":"Pizza.jpeg"},
+               "Soup": {"Text": "{'Ingredients': 'vegetables, water', 'Instructions' : 'cook vegetables in water'}", "Country":"France", "author": user_list[1],"likes": 10,"views":200,"picture":"Soup.jpeg"},
+               "Sushi": {"Text": "{'Ingredients': 'fish', 'Instructions' : 'train for 20 years'}", "Country":"Japan", "author": user_list[2],"likes": 44,"views":200,"picture":"Sushi.jpeg"},
+               "Haggis": {"Text": "{'Ingredients': 'sheeps intestines', 'Instructions' : 'Don't'}", "Country":"Scotland", "author": user_list[3],"likes": 120,"views":210,"picture":"Haggis.jpeg"},
+               "Borscht": {"Text": "{'Ingredients': 'beetroot, meat, vegetables', 'Instructions' : 'combine and cook'}", "Country":"Ukrain", "author": user_list[4],"likes": 110,"views":220,"picture":"Borscht.jpeg"},
+               "Hot pot": {"Text": "{'Ingredients': 'Meat, vegetables', 'Instructions' : 'throw in pot and add hot'}", "Country":"China", "author": user_list[5],"likes": 100,"views":210,"picture":"Hotpot.jpeg"},
         }
+
 
     for k,v in recipes.items():
         userprofile = UserProfile.objects.get_or_create(user = v["author"])[0]
@@ -48,6 +49,7 @@ def populate():
         recipe.recipe_text = v["Text"]
         recipe.country = v["Country"]
         recipe.likes = v["likes"]
+        recipe.picture = "populate_recipe_images/" + v["picture"]
         recipe.save()
 
 if __name__ == "__main__":

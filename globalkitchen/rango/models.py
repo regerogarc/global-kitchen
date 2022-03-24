@@ -17,7 +17,7 @@ class UserProfile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     favourites = models.ManyToManyField('Recipe', blank = True)
-    picture = models.ImageField(upload_to= 'user_image_dir', blank=True)
+    picture = models.ImageField(upload_to= user_image_dir, blank=True)
 
     def __str__(self):
         return self.user.username
@@ -30,7 +30,7 @@ class Recipe(models.Model):
     recipe_text = models.CharField(max_length=4096)
     country = models.CharField(choices = COUNTRY_CHOICES, max_length = 60)
     likes = models.IntegerField(default = 0)
-    picture = models.ImageField(upload_to= 'recipe_image_dir', blank=True)
+    picture = models.ImageField(upload_to= recipe_image_dir, blank=True)
     name = models.CharField(max_length = 100)
     views = models.IntegerField(default = 0)
 
