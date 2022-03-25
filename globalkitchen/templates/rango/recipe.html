@@ -16,7 +16,7 @@
 
 <header>
     <div class="header">
-        <h1>{{ user_file.recipe}}</h1>
+        <h1>{{ recipe.name}}</h1>
     </div>
 </header>
 <div class="background">
@@ -26,12 +26,11 @@
 
         <form id="page-form">
             <div class="form-wrapper">
-
                 <div class="username">
                     <h2>Upload by {{user_file.username}}</h2>
                 </div>
                 <div class="recipe-country">
-                    <h2>Country: {{ user_file.country}}</h2>
+                    <h2>Country: {{ recipe.country}}</h2>
                 </div>
 
                 <div class="picture-container">
@@ -39,6 +38,8 @@
                         {{user_file.picture}}
                     </div>
                     <div class="like-view">
+                        {{recipe.likes}}
+                        {{recipe.views}}
                         <a href="javascript:void(0)" class="like" title="like"> likes</a>
                         <a href="javascript:void(0)" class="view" title="view"> views</a>
                         <span class="clear"></span>
@@ -49,7 +50,7 @@
 
                     <div><h2>Ingredients : <br/></h2></div>
 <!--                    <div class="text_background">-->
-                        <div class="text"><p>{{user_file.ingredients}}</p></div>
+                        <div class="text"><p>{{recipe_text.Ingredients}}</p></div>
 <!--                    </div>-->
 
 
@@ -59,7 +60,7 @@
                     <!--            <form>-->
                     <div><h2>Description : <br/></h2></div>
 
-                    <div class="text" rows="11" cols="100" name="ingredients "><p>{{user_file.description}}</p></div>
+                    <div class="text" rows="11" cols="100" name="ingredients "><p>{{recipe_text.description}}</p></div>
                     <!--                <div class="button-position-2"><input name="Button" type="button" value="submit"></div>-->
                     <!--onclick="add_ingredient">-->
 
@@ -70,7 +71,7 @@
                     <!--            <form>-->
                     <div><h2>Instructions : <br/></h2></div>
 
-                    <div class="text"><p>{{user_file.instructions}}</p></div>
+                    <div class="text"><p>{{recipe_text.Instructions}}</p></div>
                     <!--onclick="add_ingredient">-->
 
                 </div>

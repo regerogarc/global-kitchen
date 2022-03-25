@@ -6,6 +6,7 @@ from django.urls import reverse
 
 from .models import UserProfile, Recipe, User
 from .forms import RecipeForm, UserForm, UserProfileForm
+import json
 
 
 def show_recipe(request, recipeID):
@@ -17,10 +18,15 @@ def show_recipe(request, recipeID):
         # pages = Recipe.objects.filter(category=category)
 
         context_dict['recipe'] = recipe
+        print(recipe.recipe_text)
+        context_dict['recipe_text'] = (json.loads(recipe.recipe_text.replace("\'","\"")))
+        print(context_dict['recipe_text'])
         # context_dict['category'] = category
     except Recipe.DoesNotExist:
         # context_dict['category'] = None
         context_dict['recipe'] = None
+        context_dict['recipe_text'] = None
+    print(context_dict)
     return render(request, 'rango/recipe.html', context_dict)
 
 
