@@ -27,7 +27,8 @@
         <form id="page-form">
             <div class="form-wrapper">
                 <div class="username">
-                    <h2>Upload by {{user_file.username}}</h2>
+                    <h2>Upload by </h2>
+                    {{recipe.author.user.username}}
                 </div>
                 <div class="recipe-country">
                     <h2>Country: {{ recipe.country}}</h2>
@@ -35,7 +36,7 @@
 
                 <div class="picture-container">
                     <div class="picture">
-                        {{user_file.picture}}
+                        <img src="{{ recipe.picture.url }}">
                     </div>
                     <div class="like-view">
                         {{recipe.likes}}

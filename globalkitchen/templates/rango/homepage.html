@@ -59,7 +59,7 @@ Homepage
         {% for recipe in recipe_views %}
 
         <li>
-            <img src="{{ MEDIA_URL }}{{ recipe.image }}" alt="dish">
+            <img src="{{recipe.picture.url}}" alt="dish">
             <a href="{% url 'rango:show_recipe' recipe.id %}">{{ recipe.name }}</a>
         </li>
 

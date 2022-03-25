@@ -19,7 +19,7 @@ def show_recipe(request, recipeID):
 
         context_dict['recipe'] = recipe
         print(recipe.recipe_text)
-        context_dict['recipe_text'] = (json.loads(recipe.recipe_text.replace("\'","\"")))
+        context_dict['recipe_text'] = json.loads(recipe.recipe_text)
         print(context_dict['recipe_text'])
         # context_dict['category'] = category
     except Recipe.DoesNotExist:
