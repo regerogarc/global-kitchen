@@ -76,7 +76,7 @@ def index(request):
 def upload_recipe(request, username_slug):
     try:
         user_profile = UserProfile.objects.get(user = request.user)
-    except user_profile.DoesNotExist:
+    except UserProfile.DoesNotExist:
         print("Failed")
 
     for filename, file in request.FILES.items():

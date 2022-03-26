@@ -1,3 +1,4 @@
+<!-- Authored by: Xinuo Zhou(2550838z) -->
 {% extends 'rango/base.html' %}
 
 {% load staticfiles %}
@@ -7,85 +8,77 @@
 {% endblock extracss %}
 
 {% block title_block %}
-    Uploadrecipe
+Uploadrecipe
 {% endblock %}
 
+
+
+
 {% block body_block %}
-
-
 <header>
     <div class="header">
         <h1>Upload Recipe</h1>
     </div>
 </header>
-
 <div class="background">
+
     <div class="grid-container">
+        <div></div>
+        <div></div>
+        <div></div>
 
         <div class="aside-left"></div>
 
-        <form id="upload-page" method="POST" action="{% url 'rango:upload_recipe' user.username %}" enctype="multipart/form-data">
+        <form id="upload-page" method="POST" action="{% url 'rango:upload_recipe' user.username %}"
+              enctype="multipart/form-data">
             {% csrf_token %}
             {% for hidden in form.hidden_fields %}
             {{ hidden }}
             {% endfor %}
-
-
             <div class="form-wrapper">
-
-                <div class="entry-name">
-                    {{form.name}}
-                    <!--<input type="text" name="name" placeholder="Enter recipe">-->
-
-                </div>
-
-                <div class="entry-country">
-                    <!--<input type="text" name="country" placeholder="Enter country">-->
-                    {{form.country}}
-
-                </div>
 
                 <div class="picture-container">
                     <div class="input-picture">
-                        {{form.picture}}
-                        <!--<input type="file" value="File" id="input_image" accept="image/jpeg">-->
-                        <label for="input_image" id="upload-image">Choose File</label>
+                        {{ form.picture }}
+                    </div>
+                </div>
 
+                <div>
+                    <div class="entry-name">
+                         <p>Enter recipe name:<br>{{ form.name }}</p>
+                    </div>
+
+                    <div class="entry-country">
+                        <p>Enter country:<br>{{ form.country }}</p>
                     </div>
                 </div>
 
                 <div class="text_container">
-                    <!--            <form>-->
-                    <div><h2>Ingredients : <br /></h2></div>
+<!--                           {{ form.recipe_text }}-->
+                    <div><h2>Ingredients : <br/></h2>
+                    <div>  <input type="text" name="recipe_text_0" required id="id_recipe_text_0" placeholder=" Enter ingredients here:"></div></div>
+                    <div><h2>Instructions : <br/></h2>
+                    <div>  <input type="text" name="recipe_text_1" required id="id_recipe_text_1" placeholder=" Enter steps here:"></div></div>
+                    <div><h2>Description : <br/></h2>
+                    <div> <input type="text" name="recipe_text_2" required id="id_recipe_text_2" placeholder=" Enter description here:"></div></div>
 
-                    <!--<textarea rows="13" cols="25" name="ingredients" placeholder=" Enter ingredients here:"
-                                     id="input-text"></textarea>-->
-                    {{form.recipe_text}}
-                    <!--                <div class="button-position"><input name="Button" type="button" value="submit"></div>-->
-                    <!--onclick="add_ingredient">-->
-                    <!--            </form>-->
 
                 </div>
 
 
-
-                <div class="process-container">
-                    <!--<div><h2>Instructions : <br /></h2></div>-->
-
-                    <!--<textarea rows="11" cols="100" name="instructions" placeholder=" Enter steps here:"
-                     id="input-text-cooking"></textarea>-->
+                <div class="submit-container">
                     <div class="button-position"><input name="Button" type="submit" value="submit"></div>
-                    <!--onclick="add_ingredient">-->
-
                 </div>
             </div>
 
         </form>
+
         <div class="aside-right"></div>
 
     </div>
 </div>
 
+ <div class="empty_space"></div>
 </div>
 
 {% endblock %}

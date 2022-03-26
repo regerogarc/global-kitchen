@@ -49,6 +49,7 @@ def populate():
         recipe.recipe_text = v["Text"]
         recipe.country = v["Country"]
         recipe.likes = v["likes"]
+        recipe.views = v["views"]
         recipe.picture = "populate_recipe_images/" + v["picture"]
         recipe.save()
 

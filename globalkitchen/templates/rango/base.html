@@ -6,12 +6,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="{% static 'css/Style.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'css/Home.css' %}" rel="stylesheet" type="text/css">
-
-<!--    <link href="{% static 'css/Signup.css' %}" rel="stylesheet" type="text/css">-->
-<!--    <link href="{% static 'css/Upload.css' %}" rel="stylesheet" type="text/css">-->
-<!--    <link href="{% static 'css/Userpage.css' %}" rel="stylesheet" type="text/css">-->
-<!--     <link href="{% static 'css/Recipe.css' %}" rel="stylesheet" type="text/css">-->
 
 {% block extracss %}
 
@@ -26,7 +20,7 @@
 </head>
 
 {% block nav_block %}
-<nav>
+<!--<nav>-->
     {% if not user.is_authenticated %}
     <div class="navbar">
         <ul class="one-list">
@@ -47,15 +41,14 @@
             <li><a href="{% url 'rango:login' %}">Log in</a></li>
         </ul>
     </div>
-</nav>
+<!--</nav>-->
     {% else %}
-<nav>
+<!--<nav>-->
     <div class="navbar">
         <ul class="one-list">
             <li><h1>Global Kitchen</h1></li>
             <li><a href="{% url 'rango:homepage' %}">Home</a></li>
             <li><a href="{% url 'rango:cookbook' %}">CookBook</a></li>
-
             <li>
                 <form class="searchbar">
                     <input type="text" name="text" placeholder="Search here!">
@@ -69,7 +62,7 @@
             <li><a href="{% url 'rango:logout' %}">Log out</a></li>
         </ul>
     </div>
-</nav>
+<!--</nav>-->
 
 {% endif %}
 {% endblock  %}

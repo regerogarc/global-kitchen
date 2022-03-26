@@ -12,10 +12,9 @@ Homepage
 
 {% block body_block %}
 
-<header>
+<header class="head">
     <div class="slide">
         <div class="images">
-            <!--            <img  src="image/1.JPG" alt="dishes">-->
             <img src="{% static 'image/2.JPG' %}" alt="dishes">
             <img src="{% static 'image/3.JPG' %}" alt="dishes">
             <img src="{% static 'image/4.JPG' %}" alt="dishes">
@@ -31,45 +30,49 @@ Homepage
     </div>
 </header>
 
-<div><h2>Most liked recipe</h2></div>
+<div class="home_h2">
+    <h2>Most liked recipe</h2>
+</div>
 
 <div class="container">
     <div class="aside-left"></div>
     <div class="wrap-list">
         {% if recipe_likes %}
-        <ul class="list-item">
+        <ul>
             {% for recipe in recipe_likes %}
             <li class="list-recipe">
-                <img src="{{ recipe.picture.url }}" alt="dish">
-                <a href="{% url 'rango:show_recipe' recipe.id %}">{{ recipe.name }}</a>
-            </li>
+                <a href="{% url 'rango:show_recipe' recipe.id %}">
+                    <img src="{{ recipe.picture.url }}" alt="{{ recipe.name }}"></a></li>
             {% endfor %}
         </ul>
         {% endif %}
     </div>
-   <div class="aside-right"></div>
+    <div class="aside-right"></div>
 
 </div>
 
-
-<div><h2>Most viewed recipe </h2></div>
+<div class="home_h2">
+    <h2>Most viewed recipe </h2></div>
 <div class="container">
-    {% if recipe_views %}
-    <ul class="list-item">
-        {% for recipe in recipe_views %}
+    <div class="aside-left"></div>
+    <div class="wrap-list">
+        {% if recipe_views %}
+        <ul>
+            {% for recipe in recipe_views %}
+            <li class="list-recipe"><a href="{% url 'rango:show_recipe' recipe.id %}">
+                <img src="{{ recipe.picture.url }}" alt="{{ recipe.name }}"></a></li>
 
-        <li>
-            <img src="{{recipe.picture.url}}" alt="dish">
-            <a href="{% url 'rango:show_recipe' recipe.id %}">{{ recipe.name }}</a>
-        </li>
-
-    </ul>
-
-    {% endfor %}
-    {% endif %}
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    <div class="aside-right"></div>
 </div>
 
-<div><h2>Recommended ingredients website </h2></div>
+<div class="home_h2">
+    <h2>Recommended ingredients website </h2>
+</div>
+
 <div class="container3">
     <div class="aside-left"></div>
     <div class="grid-item">
