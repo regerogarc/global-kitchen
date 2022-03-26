@@ -19,14 +19,14 @@ Userpage
     <div class="user-profile">
         <div class="column-1">
             <div><h2>{{ user.username }}</h2></div>
-<!--            <div><p>Country: {{ user.country }}</p></div>-->
+            <!--            <div><p>Country: {{ user.country }}</p></div>-->
             <div><p>Email: {{ user.email }}</p></div>
-<!--            <div><p>Personal Information {{ user_file.personalInfo }}</p></div>-->
+            <!--            <div><p>Personal Information {{ user_file.personalInfo }}</p></div>-->
         </div>
         <div class="column-2">
-<!--            <div class="input-picture">-->
-<!--                <input type="file" value="File" id="input_pic" accept="image/jpeg">-->
-<!--                <label for="input_pic" id="upload-pic">Choose File</label></div>-->
+            <!--            <div class="input-picture">-->
+            <!--                <input type="file" value="File" id="input_pic" accept="image/jpeg">-->
+            <!--                <label for="input_pic" id="upload-pic">Choose File</label></div>-->
         </div>
     </div>
 
@@ -43,9 +43,17 @@ Userpage
     <div class="aside-top-left"></div>
 
     <div class="my-recipe">
-        <div><h2>My Recipe:</h2></div>
-        <div><a href="{% url 'rango:upload_recipe' user.username %}" alt="upload"><input name="Button" type="button" value="Upload here!"></a></div>
-        <div class="put-my-recipe"></div>
+        <div class="my-recipe-h2"><h2>My Recipe:</h2></div>
+        <div class="my-input"><a href="{% url 'rango:upload_recipe' user.username %}" alt="upload"><input name="Button" type="button" value="Upload here!"></a></div>
+        <div class="my-recipe-list">
+            {% for r in recipes %}
+            {% if recipe.author.user.username == user.username %}
+            <a href="{% url 'rango:show_recipe' r.id %}">
+                <li><img src="{{r.picture.url}}" alt="dish"/></li>
+            </a>
+            {% endif %}
+            {% endfor %}
+        </div>
 
     </div>
 
@@ -53,6 +61,7 @@ Userpage
 
 </div>
 
+<div class="empty-space"></div>
 
 </body>
 

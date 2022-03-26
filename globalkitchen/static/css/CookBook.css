@@ -1,14 +1,14 @@
 header {
     width: 100%;
-    height: 60px;
-    overflow: hidden;
+    height: 80px;
     padding: 40px;
     background: #d9925f;
 }
 
 .header h1{
     font-size: 35px;
-    padding-left: 570px;
+    color: #a8573f;
+    justify-content: center;
 }
 @keyframes picturemove {
     from{
@@ -29,43 +29,18 @@ header {
 }
 
 .list-item li img{
-    width: 250px;
-    height: 180px;
+    width: 350px;
+    height: 250px;
     float: left;
-    margin: 5px;
+    margin: auto;
     text-align: center;
-    /*border: 20px solid #d36f51;*/
+
 }
 .list-item li{
-    width: 300px;
+    width: 400px;
     height: 300px;
-    /*border: 20px solid #d36f51;*/
     margin: 10px;
-    /*display: grid;*/
-    /*grid-template-rows: 75% 25%;*/
 }
-
-
-.grid-item li{
-    width: 350px;
-    height: 350px;
-    float: start;
-    margin-bottom: 25px;
-    background-color: #debd7c;
-    text-align: center;
-    border-radius: 4px;
-}
-.grid-item li a{
-    margin: 20px;
-    padding-top: 80px;
-    color:#debd7c;
-    font-size: 30px;
-}
-.grid-item li:hover{
-    background-color: #a8573f;
-
-}
-
 
 ul.pagination {
     display: inline-block;
@@ -78,7 +53,7 @@ ul.pagination li {display: inline;
 }
 
 ul.pagination li a {
-    color: black;
+    color: #d36f51;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
@@ -93,18 +68,6 @@ ul.pagination li a.active {
     border-radius: 5px;
 }
 ul.pagination li a:hover:not(.active){background-color: #ddd;}
-
-footer{
-    width: 100%;
-    height: 125px;
-    background-color:#a8573f;
-}
-footer p{
-    text-align: center;
-    color: white;
-    line-height: 40px;
-    font-size: 20px;
-}
 
 body {
     font-family: "Lato", sans-serif;

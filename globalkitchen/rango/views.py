@@ -74,6 +74,7 @@ def index(request):
 @login_required
 
 def upload_recipe(request, username_slug):
+
     try:
         user_profile = UserProfile.objects.get(user = request.user)
     except UserProfile.DoesNotExist:
