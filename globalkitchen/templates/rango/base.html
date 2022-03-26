@@ -20,7 +20,7 @@
 </head>
 
 {% block nav_block %}
-<!--<nav>-->
+
     {% if not user.is_authenticated %}
     <div class="navbar">
         <ul class="one-list">
@@ -41,9 +41,9 @@
             <li><a href="{% url 'rango:login' %}">Log in</a></li>
         </ul>
     </div>
-<!--</nav>-->
+
     {% else %}
-<!--<nav>-->
+
     <div class="navbar">
         <ul class="one-list">
             <li><h1>Global Kitchen</h1></li>
@@ -62,7 +62,7 @@
             <li><a href="{% url 'rango:logout' %}">Log out</a></li>
         </ul>
     </div>
-<!--</nav>-->
+
 
 {% endif %}
 {% endblock  %}

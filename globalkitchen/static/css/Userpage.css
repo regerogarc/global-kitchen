@@ -1,7 +1,6 @@
 .profile-wrapper{
     display:grid;
-    grid-template-columns: 10% auto 10%;
-    grid-template-rows: 400px 400px 700px;
+    grid-template-columns: 1fr 5fr 1fr;
     grid-column-gap: 20px;
     grid-row-gap: 20px;
     background-image: url("globalkitchen/12.JPG");
@@ -13,16 +12,13 @@
     margin-top:100px;
     background-color: #6c757d;
     display:grid;
-    grid-template-columns: 780px auto;
-    grid-template-rows: 300px;
-
-
+    grid-template-columns: auto auto;
+    border-radius: 20px;
 }
 h2{
     width:500px;
     font-size:40px;
     text-align: start;
-    /*color: #F9F0DA;*/
     margin: 30px 30px;
 }
 p {
