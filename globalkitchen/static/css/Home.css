@@ -63,6 +63,7 @@
     height: 250px;
     float: left;
     text-align: center;
+    border-radius: 20px;
 
 
 }
@@ -83,17 +84,16 @@
     height: 250px;
     float: start;
 
+    border-radius: 20px;
     margin: 25px;
     background-color: #85ab9a;
     text-align: center;
-    border-radius: 4px;
     justify-content: space-around;
     align-items: center;
 }
 .grid-item a{
     margin: 20px;
     display: inline-block;
-    /*padding-top: 80px;*/
     color:#debd7c;
     font-size: 30px;
 }

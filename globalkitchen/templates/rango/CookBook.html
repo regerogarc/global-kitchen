@@ -14,11 +14,10 @@
 
 <body>
 
-<header>
     <div class="header">
         <h1>Total recipes</h1>
     </div>
-</header>
+
 
 <div class="container">
     <div class="aside-left-element">
@@ -31,7 +30,7 @@
         </div>
 
         <h2>countries</h2>
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; > </span>
+        <span style="font-size:30px;cursor:pointer;color:#813f2c;" onclick="openNav()">&#9776; > </span>
 
         <script>
             function openNav() {
@@ -49,13 +48,10 @@
             <div class="recipe-image">
                 {% for r in recipes %}
                 <a href="{% url 'rango:show_recipe' r.id %}">
-                <li><img src="{{r.picture.url}}" alt="dish" /></li>
+                <li><img src="{{r.picture.url}}" alt="dish" /><p>{{ r.name }}</p></li>
                 </a>
                 {% endfor %}
 
-            </div>
-            <div class="recipe-name">
-                <a href="">{{recipe.name}}</a>
             </div>
         </ul>
     </div>

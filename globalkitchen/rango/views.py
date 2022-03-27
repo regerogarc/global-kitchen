@@ -15,15 +15,13 @@ def show_recipe(request, recipeID):
     try:
         recipe = Recipe.objects.get(id=recipeID)
 
-        # pages = Recipe.objects.filter(category=category)
-
         context_dict['recipe'] = recipe
         print(recipe.recipe_text)
         context_dict['recipe_text'] = json.loads(recipe.recipe_text)
         print(context_dict['recipe_text'])
-        # context_dict['category'] = category
+
     except Recipe.DoesNotExist:
-        # context_dict['category'] = None
+
         context_dict['recipe'] = None
         context_dict['recipe_text'] = None
     print(context_dict)
@@ -74,7 +72,6 @@ def index(request):
 @login_required
 
 def upload_recipe(request, username_slug):
-
     try:
         user_profile = UserProfile.objects.get(user = request.user)
     except UserProfile.DoesNotExist:
