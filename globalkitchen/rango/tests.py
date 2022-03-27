@@ -162,18 +162,28 @@ class TemplateTests(TestCase):
             reverse('rango:login'): {'full_title_pattern': r'<title>(\s*|\n*)Global Kitchen(\s*|\n*)-(\s*|\n*)LogIn(\s*|\n*)</title>',
                                      'block_title_pattern': r'{% block title_block %}(\s*|\n*)LogIn(\s*|\n*){% (endblock|endblock title_block) %}',
                                      'template_filename': 'LogIn.html'},
-            reverse('rango:show_recipe'): {'full_title_pattern': r'<title>(\s*|\n*)Global Kitchen(\s*|\n*)-(\s*|\n*)recipe(\s*|\n*)</title>',
-                                           'block_title_pattern': r'{% block title_block %}(\s*|\n*)recipe(\s*|\n*){% (endblock|endblock title_block) %}',
-                                           'template_filename': 'recipe.html'},
             reverse('rango:signup'): {'full_title_pattern': r'<title>(\s*|\n*)Global Kitchen(\s*|\n*)-(\s*|\n*)SignUp(\s*|\n*)</title>',
                                       'block_title_pattern': r'{% block title_block %}(\s*|\n*)SignUp(\s*|\n*){% (endblock|endblock title_block) %}',
                                       'template_filename': 'Signup.html'},
-            reverse('rango:login'): {'full_title_pattern': r'<title>(\s*|\n*)Global Kitchen(\s*|\n*)-(\s*|\n*)LogIn(\s*|\n*)</title>',
-                                     'block_title_pattern': r'{% block title_block %}(\s*|\n*)LogIn(\s*|\n*){% (endblock|endblock title_block) %}',
-                                     'template_filename': 'LogIn.html'},
+            reverse('rango:logout'): {'full_title_pattern': r'<title>(\s*|\n*)Global Kitchen(\s*|\n*)-(\s*|\n*)Homepage(\s*|\n*)</title>',
+                                     'block_title_pattern': r'{% block title_block %}(\s*|\n*)Homepage(\s*|\n*){% (endblock|endblock title_block) %}',
+                                     'template_filename': 'homepage.html'},
             reverse('rango:userpage'): {'full_title_pattern': r'<title>(\s*|\n*)Global Kitchen(\s*|\n*)-(\s*|\n*)UserPage(\s*|\n*)</title>',
                                         'block_title_pattern': r'{% block title_block %}(\s*|\n*)UserPage(\s*|\n*){% (endblock|endblock title_block) %}',
                                         'template_filename': 'Userpage.html'},
-            reverse('rango:userpage'): {'full_title_pattern': r'<title>(\s*|\n*)Global Kitchen(\s*|\n*)-(\s*|\n*)UserPage(\s*|\n*)</title>',
-                                        'block_title_pattern': r'{% block title_block %}(\s*|\n*)UserPage(\s*|\n*){% (endblock|endblock title_block) %}',
+            reverse('rango:restricted'): {'full_title_pattern': r'<title>(\s*|\n*)Global Kitchen(\s*|\n*)-(\s*|\n*)restricted(\s*|\n*)</title>',
+                                        'block_title_pattern': r'{% block title_block %}(\s*|\n*)restricted(\s*|\n*){% (endblock|endblock title_block) %}',
                                         'template_filename': 'Userpage.html'}}
+
+        for url in mappings.keys():
+            full_title_pattern = mappings[url]['full_title_pattern']
+            template_filename = mappings[url]['template_filename']
+            block_title_pattern = mappings[url]['block_title_pattern']
+
+            request = self.client.get(url)
+            content = request.content.decode('utf-8')
+            template_str = self.get_template(os.path.join(template_base_path, template_filename))
+
+            self.assertTrue(re.search(full_title_pattern, content), f"Incorrect title block")
+            self.assertTrue(re.search(block_title_pattern, template_str),f"Incorrect page Title")
+
