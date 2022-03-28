@@ -3,8 +3,11 @@
 
 {% load staticfiles %}
 
+
 {% block extracss %}
 <link href="{% static 'css/Recipe.css' %}" rel="stylesheet" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'js/recipe_ajax.js' %}"> </script>
 {% endblock extracss %}
 
 {% block title_block %}
@@ -26,8 +29,10 @@
             <div class="form-wrapper">
 
                 <div class="username">
-                    <h2>Upload by
-                        {{ recipe.author.user.username }}</h2>
+                    <h2>
+                        Upload by
+                        {{ recipe.author.user.username }}
+                    </h2>
                 </div>
                 <div class="username">
                     <h2>Country: {{ recipe.country }}</h2>
@@ -48,26 +53,27 @@
                 </div>
 
                 <div class="text_container">
-                    <div><h2>Ingredients : <br/></h2></div>
+                    <div><h2>Ingredients : <br /></h2></div>
 
-                        <div class="text"><p>{{ recipe_text.Ingredients }}</p></div>
+                    <div class="text"><p>{{ recipe_text.Ingredients }}</p></div>
                 </div>
 
 
                 <div class="description-container">
-                    <div><h2>Description : <br/></h2></div>
+                    <div><h2>Description : <br /></h2></div>
 
-                    <div class="text2" ><p>{{ recipe_text.description }}</p></div>
+                    <div class="text2"><p>{{ recipe_text.description }}</p></div>
                 </div>
 
                 <div class="process-container">
-                    <div><h2>Instructions : <br/></h2></div>
+                    <div><h2>Instructions : <br /></h2></div>
                     <div class="text2"><p>{{ recipe_text.Instructions }}</p></div>
                 </div>
-
+                {% if user.is_authenticated %}
                 <div class="favourite">
-                    <div><input type="button" id="favourite" name="{{ recipe.name }}" value="Favourite" /></div>
+                    <div><input type="button" id="favourite" name="{{ recipe.name }}" value="Favourite" data="{{recipe.id}}" data-url="{% url 'rango:favourite'  %}" data-token= "{{ csrf_token }}" /></div>
                 </div>
+                {% endif %}
             </div>
         </form>
 

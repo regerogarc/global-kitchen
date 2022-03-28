@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.urls import reverse
 
 from .models import UserProfile, Recipe, User
@@ -36,6 +36,19 @@ def cookbook(request):
 
 def profiles(request):
     return None
+
+
+def favourite(request):
+    if request.is_ajax:
+        user_prof = UserProfile.objects.get(user = request.user)
+        recipe = Recipe.objects.get(id = request.POST["recipe"])
+        user_prof.favourites.add(recipe)
+        response = "favourited"
+        return HttpResponse(response, content_type = "application/json")
+    else:
+        raise Http404
+
+
 
 @login_required
 def userpage(request, username_slug):
