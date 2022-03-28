@@ -4,6 +4,7 @@
 
 {% block extracss %}
 <link href="{% static 'css/CookBook.css' %}" rel="stylesheet" type="text/css">
+<script src="{% static 'js/CookBook.js' %}"></script>
 {% endblock extracss %}
 
 {% block title_block %}
@@ -15,7 +16,11 @@
 <body>
 
     <div class="header">
-        <h1>Total recipes</h1>
+        {% if country_name %}
+        <h1>{{ country_name }}</h1>
+        {% else %}
+        <h1>All Recipes</h1>
+        {% endif %}
     </div>
 
 
@@ -23,14 +28,14 @@
     <div class="aside-left-element">
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="">Ukraine</a>
-            <a href="">China</a>
-            <a href="">Japan</a>
-            <a href="">Italy</a>
+            <a href="{% url 'rango:cookbook' %}">All Recipes</a>
+            {% for country in countries %}
+            <a href="{% url 'rango:cookbook' country.0 %}">{{ country.1 }}</a>
+            {% endfor %}
         </div>
 
         <h2>countries</h2>
-        <span style="font-size:30px;cursor:pointer;color:#813f2c;" onclick="openNav()">&#9776; > </span>
+        <span style="font-size:30px;cursor:pointer;color:#813f2c;" onclick="openNav()">&#9776;</span>
 
         <script>
             function openNav() {
@@ -45,8 +50,11 @@
 
     <div class="wrap-list-item">
         <ul class="list-item">
-            <div class="recipe-image">
-                {% for r in recipes %}
+            {% if not page_obj.object_list %}
+            <p>This country has no recipes yet</p>
+            {% endif %}
+            <div id="recipe-list" class="recipe-image">
+                {% for r in page_obj.object_list %}
                 <a href="{% url 'rango:show_recipe' r.id %}">
                 <li><img src="{{r.picture.url}}" alt="dish" /><p>{{ r.name }}</p></li>
                 </a>
@@ -60,16 +68,16 @@
 </div>
 
 
-<ul class="pagination">
-    <li><a href="">«</a></li>
-    <li><a class="active" href="">1</a></li>
-    <li><a href="">2</a></li>
-    <li><a href="">3</a></li>
-    <li><a href="">4</a></li>
-    <li><a href="">5</a></li>
-    <li><a href="">6</a></li>
-    <li><a href="">7</a></li>
-    <li><a href="">»</a></li>
+<ul id="page-numbers" class="pagination">
+    {% if page_obj.has_previous %}
+        <li><a onclick="pagination(1)">&laquo;</a></li>
+        <li><a onclick="pagination({{ page_obj.previous_page_number }})">{{ page_obj.previous_page_number }}</a></li>
+    {% endif %}
+    <li><a class="active">{{ page_obj.number }}</a></li>
+    {% if page_obj.has_next %}
+        <li><a onclick="pagination({{ page_obj.next_page_number }})">{{ page_obj.next_page_number }}</a></li>
+        <li><a onclick="pagination({{ page_obj.paginator.num_pages }})">&raquo;</a></li>
+    {% endif %}
 </ul>
 
 {% endblock %}

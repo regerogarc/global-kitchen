@@ -1,11 +1,13 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, JsonResponse
 from django.urls import reverse
+from django.core.paginator import Paginator
 
 from .models import UserProfile, Recipe, User
 from .forms import RecipeForm, UserForm, UserProfileForm
+from .Countries import COUNTRY_CHOICES, get_countries
 import json
 
 
@@ -28,11 +30,55 @@ def show_recipe(request, recipeID):
     return render(request, 'rango/recipe.html', context_dict)
 
 
-def cookbook(request):
-    recipe_list = Recipe.objects.order_by('-likes')[:6]
+def cookbook(request, country='allrecipes'):
     context_dict = {}
-    context_dict["recipes"] = recipe_list
-    return render(request, 'rango/CookBook.html',context=context_dict)
+    if country == "allrecipes":
+        context_dict['country_name'] = False
+        recipe_list = Recipe.objects.order_by('-likes')
+    else:
+        context_dict['country_name'] = [v for i, v in COUNTRY_CHOICES if i == country][0]
+        recipe_list = Recipe.objects.filter(country=country).order_by('-likes')
+    
+    context_dict['countries'] = COUNTRY_CHOICES
+
+    paginator = Paginator(recipe_list, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context_dict['page_obj'] = page_obj
+    return render(request, 'rango/CookBook.html', context=context_dict)
+
+def pagination(request, country=False):
+    if not country:
+        recipe_list = Recipe.objects.order_by('-likes')
+    else:
+        recipe_list = Recipe.objects.filter(country=country).order_by('-likes')
+    paginator = Paginator(recipe_list, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    result = {}
+    result["recipes"] = []
+    for recipe in page_obj.object_list:
+        recipe_dict = {}
+        recipe_dict["url"] = recipe.picture.url
+        recipe_dict["id"] = recipe.id
+        recipe_dict["name"] = recipe.name
+        result["recipes"].append(recipe_dict)
+
+    result['page_obj'] = {
+        'has_prev': page_obj.has_previous(),
+        'prev_num': page_obj.previous_page_number() if page_obj.has_previous() else 'none',
+        'num': page_obj.number,
+        'has_next': page_obj.has_next(),
+        'next_num': page_obj.next_page_number() if page_obj.has_next() else 'none',
+        'num_pages': page_obj.paginator.num_pages
+    }
+
+    print(result['page_obj']['num'])
+
+    print(result)
+
+    return JsonResponse({"result": result})
 
 def profiles(request):
     return None
